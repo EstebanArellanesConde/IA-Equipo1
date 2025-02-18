@@ -1,3 +1,4 @@
+// Este codigo encuentra la solucion con el mayor numero de caballos (necesita computar el maximo antes)
 #include<bits/stdc++.h>
 using namespace std;
 
@@ -54,14 +55,3 @@ int main() {
  
   dfs(0LL, 0, 0, 0);
 }
-
-
-/*
- * 1 1 0 1 0 1 
- * 1 1 0 1
- * 1 0 0 0
- * 1 0 0 0
- * 1 0 0 0
- * 1 1 0 1
- * 1 1 0 1
- * */
