@@ -34,7 +34,7 @@ void dfs(unsigned long long board, int i, int j, int knights) {
 
       exit(0);
     }
-    
+ 
     return;
   }
  
