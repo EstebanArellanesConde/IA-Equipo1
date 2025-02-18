@@ -1,4 +1,4 @@
-
+// Este codigo solo encuentre la primer solucion (no necesariamente la mejor)
 #include<bits/stdc++.h>
 using namespace std;
 using namespace chrono;
