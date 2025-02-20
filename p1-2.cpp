@@ -1,21 +1,20 @@
 // Este codigo solo encuentre la primer solucion (no necesariamente la mejor)
 #include<bits/stdc++.h>
 using namespace std;
-using namespace chrono;
 
 vector<pair<int, int>> moves = {
   {-2, -2}, {-2, 2}, {2, -2}, {2, 2},
 };
 int n;
 
-bool check(unsigned long long board, int i, int j) {
+bool check(vector<vector<bool>> board, int i, int j) {
   int a, b;
 
   for (auto [x, y] : moves) {
     a = i + x;
     b = j + y;
 
-    if (a >= 0 && a < n && b >= 0 && b < n && (board & (1LL << (a * n + b)))) {
+    if (a >= 0 && a < n && b >= 0 && b < n && board[a][b]) {
       return false;
     }
   }
@@ -23,32 +22,40 @@ bool check(unsigned long long board, int i, int j) {
   return true;
 }
 
-void dfs(unsigned long long board, int i, int j, int knights) {
-  if (i == n) {
-    cout << '\n' << knights << '\n';
-
-    for (int i = 0; i < n; i++) {
-      for (int j = 0; j < n; j++) {
-        cout << ((board & (1LL << (i * n + j))) ? 1 : 0) << ' ';
-      }
-      cout << '\n';
+void print(vector<vector<bool>> board) {
+  for (int i = 0; i < n; i++) {
+		for (int j = 0; j < n; j++) {
+      cout << (int)board[i][j] << ' ';
     }
+    cout << '\n';
+	}
+  cout << '\n';
+}
 
+void dfs(vector<vector<bool>> board, int i, int j, int knights) {
+  if (i == n) {
+    cout << "\nNumero de caballos: " << knights << "\n\n";
+    print(board);
     exit(0);
   }
+
+  print(board);
 
   int x = (j + 1 < n) ? i : i + 1;
   int y = (j + 1 < n) ? j + 1 : 0;
 
   if (check(board, i, j)) {
-    board |= (1LL << (i * n + j));
+    board[i][j] = 1;
     dfs(board, x, y, knights + 1);
-  } else dfs(board, x, y, knights);
+  } 
+
+  board[i][j] = 0;
+  dfs(board, x, y, knights);
 }
 
 int main() {
-  cout << "n = ";
+  cout << "Ingrese el valor de n\n$ ";
   cin >> n;
 
-  dfs(0LL, 0, 0, 0);
+  dfs(vector<vector<bool>>(n, vector<bool>(n, 0)), 0, 0, 0);
 }
