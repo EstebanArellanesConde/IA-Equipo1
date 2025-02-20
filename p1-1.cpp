@@ -3,7 +3,7 @@
 using namespace std;
 
 vector<pair<int, int>> moves = {{-2, -2}, {-2, 2}, {2, -2}, {2, 2}};
-vector<int> maxKnights = {0, 1, 4, 7, 8, 16, 24};
+vector<int> maxKnights = {0, 1, 4, 7, 8, 16, 24, 30};
 int n;
 
 bool check(vector<vector<bool>> board, int i, int j) {
