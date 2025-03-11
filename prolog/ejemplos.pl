@@ -24,4 +24,4 @@ pc([H1],[H2|T1],[[H1,H2]|T2]):-
 pc([H1|T1],L2,R3):-
     pc([H1],L2,R1),
     pc(T1,L2,R2),
-    append(R1,R2,R3).
+    append(R1,R2,R3). 
