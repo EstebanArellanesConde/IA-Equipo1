@@ -17,4 +17,3 @@ trans(F1 imp F2, (neg G1) or G2):-
     trans(F2,G2).
 trans(F1 dimp F2, R):-
     trans((F1 imp F2) and (F2 imp F1),R).
-
