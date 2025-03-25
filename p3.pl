@@ -71,11 +71,23 @@ lpk(L, [F1 or F2|T2], VL, VR):-
     append([F1, F2], T2, R2),
     lpk(L, R2, VL, VR).
 
+<<<<<<< HEAD
 % Caso recursivo de disyunción lado izquierdo
 lpk([F1 or F2|T1], R, VL, VR):-
     append([F1], T1, L1),
     append([F2], T1, L2),
     lpk(L1, R, VL, VR),
+=======
+% Caso recursivo de disyunción lado izquierdo 1
+lpk([F1 or F2|T1], R, VL, VR):-
+    append([F1], T1, L1),
+    append([F2], T1, L2),
+    lpk(L1, L2, R, VL, VR).
+
+% Caso recursivo de disyunción lado izquierdo 2
+lpk(L1, L2, R, VL, VR):-
+    lpk(L1, R, VL, VR);
+>>>>>>> 9c5a8abc1a92364352a294e08bfea7f587a3f64a
     lpk(L2, R, VL, VR).
 
 /** <examples>
