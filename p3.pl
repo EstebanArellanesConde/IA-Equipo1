@@ -31,7 +31,7 @@ trans(F1 imp F2, (neg G1) or G2):-
 % Caso recursivo de doble implicación
 trans(F1 dimp F2, R):-
     trans((F1 imp F2) and (F2 imp F1),R).
-    
+
 
 % CÁLCULO DE SECUENTES INICIALES
 % Clausula principal 
@@ -81,16 +81,15 @@ lpk([F1 or F2|T1], R, VL, VR):-
 /** <examples>
 ?- checkExpression(((p imp q) and (q imp r)) imp (p imp r)), !.			% true
 ?- checkExpression(neg (p and q) dimp (neg p or neg q)), !.				% true
-?- checkExpression(((p imp q) imp q) imp q), !.							% true
+?- checkExpression(((p imp q) imp q) imp q), !.							% false
 ?- checkExpression(((p imp q) imp p) imp q), !. 						% false
-?- checkExpression((p or neg (q and r)) imp ((p dimp r) or q)), !.		% true
+?- checkExpression((p or neg (q and r)) imp ((p dimp r) or q)), !.		% false
 ?- checkExpression((p and q) imp (p or r)), !.							% true
-?- checkExpression((p and q) or (q imp p)), !.							% true
-?- checkExpression((p imp q) dimp (neg q imp p)), !.					% true
+?- checkExpression((p imp q) or (q imp p)), !.							% true
+?- checkExpression((p imp q) dimp (neg q imp p)), !.					% false
 ?- checkExpression(((neg p imp q) and (neg p imp neg q)) imp p), !.		% true
-?- checkExpression(((p imp q) imp q) imp p), !.							% true
+?- checkExpression(((p imp q) imp q) imp p), !.							% false
 ?- checkExpression(((q imp r) imp (p imp q)) imp (p imp q)), !.			% true
 ?- checkExpression(p imp (q imp (q imp p))), !.							% true
-?- checkExpression((p dimp q) dimp (p dimp (q dimp p))), !.				% true
 ?- checkExpression(neg (p imp q) imp p), !.								% true
 */
